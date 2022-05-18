@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Verdana Pro';
+    src: local('Verdana Pro Bold Italic'), local('Verdana-Pro-Bold-Italic'),
+        url('VerdanaPro-BoldItalic.woff2') format('woff2'),
+        url('VerdanaPro-BoldItalic.woff') format('woff'),
+        url('VerdanaPro-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+  }
