@@ -1,122 +1,131 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { VideoPlayer } from '../../atoms'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCurrentPlayVideo,
+  setDataShowreel,
+  setDataShowreelByCategoryId,
+} from "../../../config/Redux/actions";
 
 function Showreel() {
-  const [refName, setRefName] = useState('Video');
+  // const [isLoading, setIsLoading] = useState(true);
+  const [menuId, setMenuId] = useState(null);
+  // const [currentVideo, setCurrentVideo] = useState();
 
-  const diamondRef = useRef(null);
+  const showreelData = useSelector((state) => state.HomeReducer.showreel);
+  const showreelCurrent = useSelector(
+    (state) => state.HomeReducer.showreelCurrent
+  );
+  const currentPlayVideo = useSelector(
+    (state) => state.HomeReducer.currentPlayVideo
+  );
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    if (diamondRef.current) {
-      console.log('diamondRef', diamondRef.current.clientWidth);
+    dispatch(setDataShowreel());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (showreelData.length > 0) {
+      setMenuId(showreelData[0]._id);
     }
-  }, [ refName ]);
+  }, [showreelData]);
 
-  const showreelMenu = [
-    {
-      title: 'Video',
-    },
-    {
-      title: 'Audio',
-    },
-    {
-      title: 'Virtual Event',
-    },
-  ];
-
-
-  const switchRefMenu = (e) => {
-    switch (e) {
-      case "Video":
-        setRefName('Video');
-        break;
-      case "Audio":
-        setRefName('Audio');
-        break;
-      case "Virtual Event":
-        setRefName('Virtual Event');
-        break;
-      default:
-        break;
+  useEffect(() => {
+    if (menuId) {
+      dispatch(setDataShowreelByCategoryId(menuId));
     }
+  }, [menuId, dispatch]);
+
+  console.log(currentPlayVideo);
+  const handleMenuId = (id) => {
+    setMenuId(id);
   };
 
-
-  
   return (
-    <section className='relative bg-main-color batas-suci text-text-color'>
-        <div className="py-20">
-            <div className="title lg:text-right text-center px-16">
-                <h2 className='lg:text-3xl text-2xl font-bold uppercase mb-6'>
-                    Showreel
-                </h2>
-                <p className='text-sm sm:text-base'>
-                Salah Satu Hasil Karya Kami 
-                </p>
-            </div>
-            <div className='grid md:grid-cols-3 mt-8 gap-3 md:gap-2 lg:gap-6 justify-between '>
-              <div className="video-player-sec md:col-span-2 ">
-                <div className=" relative showreel-menu px-5">
-                  <div className="video-menu-item flex gap-5 justify-center items-center pb-6">
-                    {showreelMenu.map((item, index) => ( 
-                          <button 
-                            className={refName === item.title ? 'relative text-2xl h-8 font-semibold duration-500' : 'relative font-light h-8 duration-500'} 
-                            key={index}
-                            ref={refName === item.title ? diamondRef : null}
-                            onClick={() => switchRefMenu(item.title)}
-                            >
-                            {item.title}
-                          </button>
-                      ))}
-                  </div>
-                </div>
-
-                <VideoPlayer  /> 
-              </div>
-              <div className="md:col-span-1 mt-[56px] hidden md:block">
-                <div className="relative showreel-menu px-5">
-                  <div className="video-menu-item grid grid-cols-2 md:gap-2 lg:gap-5 justify-center items-center pb-6">
-                    <div className="showreel-item-img cursor-pointer">
-                      <img src="https://via.placeholder.com/480x270" alt="" className='rounded-md'/>
-                    </div>
-                    <div className="showreel-item-img cursor-pointer">
-                      <img src="https://via.placeholder.com/480x270" alt="" className='rounded-md'/>
-                    </div>
-                    <div className="showreel-item-img cursor-pointer">
-                      <img src="https://via.placeholder.com/480x270" alt="" className='rounded-md'/>
-                    </div>
-                    <div className="showreel-item-img cursor-pointer">
-                      <img src="https://via.placeholder.com/480x270" alt="" className='rounded-md'/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="carousel md:hidden carousel-center w-full p-4 space-x-4 bg-neutral rounded-box">
-                <div className="carousel-item">
-                  <img src="https://via.placeholder.com/480x270" className="rounded-box w-[240px]" />
-                </div> 
-                <div className="carousel-item">
-                  <img src="https://via.placeholder.com/480x270" className="rounded-box w-[240px]" />
-                </div> 
-                <div className="carousel-item">
-                  <img src="https://via.placeholder.com/480x270" className="rounded-box w-[240px]" />
-                </div> 
-                <div className="carousel-item">
-                  <img src="https://via.placeholder.com/480x270" className="rounded-box w-[240px]" />
-                </div> 
-                <div className="carousel-item">
-                  <img src="https://via.placeholder.com/480x270" className="rounded-box w-[240px]" />
-                </div> 
-                <div className="carousel-item">
-                  <img src="https://via.placeholder.com/480x270" className="rounded-box w-[240px]" />
-                </div> 
-                <div className="carousel-item">
-                  <img src="https://via.placeholder.com/480x270" className="rounded-box w-[240px]" />
-                </div>
-              </div>
-            </div>
+    <section className="relative bg-main-color batas-suci text-text-color">
+      <div className="py-20">
+        <div className="title lg:text-right text-center px-16">
+          <h2 className="lg:text-3xl text-2xl font-bold uppercase mb-6">
+            Showreel
+          </h2>
+          <p className="text-sm sm:text-base">Salah Satu Hasil Karya Kami</p>
         </div>
+        <div className="grid md:grid-cols-3 mt-8 gap-3 md:gap-2 lg:gap-6 justify-between ">
+          <div className="video-player-sec md:col-span-2 ">
+            <div className=" relative showreel-menu px-5">
+              <div className="video-menu-item flex gap-5 justify-center items-center pb-6">
+                {showreelData?.map((item) => (
+                  <button
+                    className={
+                      showreelCurrent?._id === item._id
+                        ? "relative text-2xl h-8 font-semibold duration-500"
+                        : "relative font-light h-8 duration-500"
+                    }
+                    key={item._id}
+                    onClick={() => handleMenuId(item._id)}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="video-embed-cont overflow-hidden relative w-full after:pt-[56.25%] after:block rounded-2xl cursor-auto">
+                <div className="w-full h-full absolute top-0 left-0">
+                  <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${currentPlayVideo}`}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:col-span-1 mt-[56px] hidden md:block">
+            <div className="relative showreel-menu px-5">
+              <div className="video-menu-item grid grid-cols-2 md:gap-2 lg:gap-5 justify-center items-center pb-6">
+                {showreelCurrent?.data?.map((item) => (
+                  <div
+                    className="showreel-item-img cursor-pointer"
+                    key={item._id}
+                    onClick={() => {
+                      console.log(item.video_id);
+                      dispatch(setCurrentPlayVideo(item.video_id));
+                    }}
+                  >
+                    <img
+                      // src="https://via.placeholder.com/480x270"
+                      src={`https://img.youtube.com/vi/${item.video_id}/mqdefault.jpg`}
+                      alt={item.title}
+                      className="rounded-md"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="carousel md:hidden carousel-center w-full p-4 space-x-4 bg-neutral rounded-box">
+            {/* item here */}
+            {showreelCurrent?.data?.map((item) => (
+              <div className="carousel-item" key={item._id}>
+                <img
+                  src={`https://img.youtube.com/vi/${item.video_id}/mqdefault.jpg`}
+                  alt={item.title}
+                  className="rounded-box w-[240px]"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
-  )
+  );
 }
 
-export default Showreel
+export default Showreel;
