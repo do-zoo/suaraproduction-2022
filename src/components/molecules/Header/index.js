@@ -44,7 +44,7 @@ function Header() {
             >
               <img src={Logo} alt="logo" className="h-12" />
               <span className="hidden md:inline duration-500">
-                Company Name
+                Suara Production
               </span>
             </a>
           </div>
