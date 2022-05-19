@@ -33,7 +33,8 @@ function Trusted() {
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
                 src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
-                alt="logo"
+                alt={data[0]?.name}
+                title={data[0]?.name}
                 className="max-w-full max-h-full duration-500"
               />
             </div>
@@ -41,38 +42,17 @@ function Trusted() {
           <div className="section flex sm:flex-col gap-3 lg:gap-5">
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={GoogleLogo}
-                alt="logo"
+                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                alt={data[1]?.name}
+                title={data[1]?.name}
                 className="max-w-full max-h-full duration-500"
               />
             </div>
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={GoogleLogo}
-                alt="logo"
-                className="max-w-full max-h-full duration-500"
-              />
-            </div>
-          </div>
-          <div className="section flex sm:flex-col gap-3 lg:gap-5">
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={GoogleLogo}
-                alt="logo"
-                className="max-w-full max-h-full duration-500"
-              />
-            </div>
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={GoogleLogo}
-                alt="logo"
-                className="max-w-full max-h-full duration-500"
-              />
-            </div>
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={GoogleLogo}
-                alt="logo"
+                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                alt={data[2]?.name}
+                title={data[2]?.name}
                 className="max-w-full max-h-full duration-500"
               />
             </div>
@@ -80,15 +60,43 @@ function Trusted() {
           <div className="section flex sm:flex-col gap-3 lg:gap-5">
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={GoogleLogo}
-                alt="logo"
+                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                alt={data[3]?.name}
+                title={data[3]?.name}
                 className="max-w-full max-h-full duration-500"
               />
             </div>
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={GoogleLogo}
-                alt="logo"
+                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                alt={data[4]?.name}
+                title={data[4]?.name}
+                className="max-w-full max-h-full duration-500"
+              />
+            </div>
+            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
+              <img
+                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                alt={data[5]?.name}
+                title={data[5]?.name}
+                className="max-w-full max-h-full duration-500"
+              />
+            </div>
+          </div>
+          <div className="section flex sm:flex-col gap-3 lg:gap-5">
+            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
+              <img
+                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                alt={data[6]?.name}
+                title={data[6]?.name}
+                className="max-w-full max-h-full duration-500"
+              />
+            </div>
+            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
+              <img
+                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                alt={data[7]?.name}
+                title={data[7]?.name}
                 className="max-w-full max-h-full duration-500"
               />
             </div>
@@ -96,8 +104,9 @@ function Trusted() {
           <div className="section">
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={GoogleLogo}
-                alt="logo"
+                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                alt={data[8]?.name}
+                title={data[8]?.name}
                 className="max-w-full max-h-full duration-500"
               />
             </div>
