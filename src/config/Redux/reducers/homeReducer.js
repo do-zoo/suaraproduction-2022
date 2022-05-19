@@ -5,7 +5,7 @@ const initialState = {
   currentPlayVideo: null,
 };
 
-const GlobalReducer = (state = initialState, action) => {
+export default function HomeReducer(state = initialState, action) {
   switch (action.type) {
     case "SET_SHOWREEL":
       return {
@@ -32,6 +32,4 @@ const GlobalReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
-
-export default GlobalReducer;
+}

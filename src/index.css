@@ -1,5 +1,5 @@
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 @import url("assets/font/VerdanaPro-BoldItalic/style.css");
 
 @tailwind base;
@@ -15,72 +15,106 @@
   }
   .hamburger-active {
     width: 0px;
-  } 
+  }
 
   #hamburger.open .icon-left {
     background: transparent;
- }
+  }
   #hamburger.open .icon-left:before {
     transform: rotateZ(45deg) scaleX(1.4) translate(2px, 2px);
- }
+  }
   #hamburger.open .icon-left:after {
     transform: rotateZ(-45deg) scaleX(1.4) translate(2px, -2px);
- }
+  }
   #hamburger.open .icon-right {
     background: transparent;
- }
+  }
   #hamburger.open .icon-right:before {
     transform: rotateZ(-45deg) scaleX(1.4) translate(-2px, 2px);
- }
+  }
   #hamburger.open .icon-right:after {
     transform: rotateZ(45deg) scaleX(1.4) translate(-2px, -2px);
- }
+  }
   #hamburger:hover {
     cursor: pointer;
- }
+  }
 
- video::-webkit-media-controls-enclosure {
-  display:none !important;
-}
+  video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
 
-#video-controller {
-  z-index: 2147483647;
-}
+  #video-controller {
+    z-index: 2147483647;
+  }
 
- .diamond-gradient{
+  .diamond-gradient {
     position: absolute;
     left: 46.9%;
     top: 46%;
     transform: translate(-50%, -20%);
     height: 16px;
-    bottom:10px;
-    background: radial-gradient(50% 50% at 50% 20%, rgba(255, 255, 255, 0.6) 0%, rgba(55, 59, 61, 0) 100%);
- }
+    bottom: 10px;
+    background: radial-gradient(
+      50% 50% at 50% 20%,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(55, 59, 61, 0) 100%
+    );
+  }
 
- .blur-gradient{
-  background: radial-gradient(483.9% 2719.65% at -49.5% -250%, #D798E1 17.55%, #9BFFA5 27.56%, #AED3FF 49.89%, #C9D4EF 56.53%, #CACFFA 65.69%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-  filter: blur(300px);
- }
+  .blur-gradient {
+    background: radial-gradient(
+        483.9% 2719.65% at -49.5% -250%,
+        #d798e1 17.55%,
+        #9bffa5 27.56%,
+        #aed3ff 49.89%,
+        #c9d4ef 56.53%,
+        #cacffa 65.69%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    filter: blur(300px);
+  }
 
- .txt-gradient-orange{
-  background: linear-gradient(53.94deg, #FF7F2B 15.02%, #FEFEFF 82.83%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;  
- }
+  .txt-gradient-orange {
+    background: linear-gradient(53.94deg, #ff7f2b 15.02%, #fefeff 82.83%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
 
- .txt-gradient-blue{
-  background: linear-gradient(53.94deg, #373FFF 15.02%, #3ACAF8 82.83%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;  
- }
+  .txt-gradient-blue {
+    background: linear-gradient(53.94deg, #373fff 15.02%, #3acaf8 82.83%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
 }
 
 @layer components {
   .batas-suci {
     @apply mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20;
+  }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #e0e4fc;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #ff7f2b;
+    border-radius: 100vh;
+    border: 2px solid #e0e4fc;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #f17f2b;
   }
 }

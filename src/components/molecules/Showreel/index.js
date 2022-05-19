@@ -88,8 +88,8 @@ function Showreel() {
           </div>
 
           <div className="md:col-span-1 mt-[56px] hidden md:block">
-            <div className="relative showreel-menu px-5">
-              <div className="video-menu-item grid grid-cols-2 md:gap-2 lg:gap-5 justify-center items-center pb-6">
+            <div className="relative showreel-menu px-5 overflow-y-scroll h-full space-x-5 scrollbar">
+              <div className="absolute left-0 top-0 video-menu-item grid grid-cols-2 grid-rows-4 overflow-hidden md:gap-2 lg:gap-5 justify-center items-center pb-6 pr-5">
                 {showreelCurrent?.data?.map((item) => (
                   <div
                     className="showreel-item-img cursor-pointer"
