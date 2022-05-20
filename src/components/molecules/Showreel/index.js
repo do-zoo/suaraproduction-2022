@@ -95,7 +95,6 @@ function Showreel() {
                     className="relative rounded-md showreel-item-img cursor-pointer"
                     key={item._id}
                     onClick={() => {
-                      console.log(item.video_id);
                       dispatch(setCurrentPlayVideo(item.video_id));
                     }}
                   >
@@ -137,7 +136,13 @@ function Showreel() {
           <div className="carousel md:hidden carousel-center w-full p-4 space-x-4 bg-neutral rounded-box scrollbar">
             {/* item here */}
             {showreelCurrent?.data?.map((item) => (
-              <div className="carousel-item relative" key={item._id}>
+              <div
+                className="carousel-item relative"
+                key={item._id}
+                onClick={() => {
+                  dispatch(setCurrentPlayVideo(item.video_id));
+                }}
+              >
                 <img
                   src={`https://img.youtube.com/vi/${item.video_id}/mqdefault.jpg`}
                   alt={item.title}
