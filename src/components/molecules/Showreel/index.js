@@ -72,7 +72,7 @@ function Showreel() {
             </div>
 
             <div className="relative">
-              <div className="video-embed-cont overflow-hidden relative w-full after:pt-[56.25%] after:block rounded-2xl cursor-auto">
+              <div className="video-embed-cont overflow-hidden relative w-full after:pt-[56.25%] after:block rounded-2xl cursor-auto border-8">
                 <div className="w-full h-full absolute top-0 left-0">
                   <iframe
                     className="w-full h-full"
@@ -92,7 +92,7 @@ function Showreel() {
               <div className="absolute left-0 top-0 video-menu-item grid grid-cols-2 grid-rows-4 overflow-hidden md:gap-2 lg:gap-5 justify-center items-center pb-6 pr-5">
                 {showreelCurrent?.data?.map((item) => (
                   <div
-                    className="showreel-item-img cursor-pointer"
+                    className="relative rounded-md showreel-item-img cursor-pointer"
                     key={item._id}
                     onClick={() => {
                       console.log(item.video_id);
@@ -103,22 +103,71 @@ function Showreel() {
                       // src="https://via.placeholder.com/480x270"
                       src={`https://img.youtube.com/vi/${item.video_id}/mqdefault.jpg`}
                       alt={item.title}
-                      className="rounded-md"
+                      className={` relative rounded-md showreel-item-img cursor-pointer ${
+                        currentPlayVideo === item.video_id
+                          ? "brightness-[20%]"
+                          : "hover:brightness-100"
+                      }`}
                     />
+                    <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center">
+                      {currentPlayVideo === item.video_id ? (
+                        <p>Now Playing...</p>
+                      ) : (
+                        <p className="text-gray-500 hover:text-my-orange h-full w-full flex justify-center items-center duration-500">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-12 w-12 bg-white rounded-full"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </p>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <div className="carousel md:hidden carousel-center w-full p-4 space-x-4 bg-neutral rounded-box">
+          <div className="carousel md:hidden carousel-center w-full p-4 space-x-4 bg-neutral rounded-box scrollbar">
             {/* item here */}
             {showreelCurrent?.data?.map((item) => (
-              <div className="carousel-item" key={item._id}>
+              <div className="carousel-item relative" key={item._id}>
                 <img
                   src={`https://img.youtube.com/vi/${item.video_id}/mqdefault.jpg`}
                   alt={item.title}
-                  className="rounded-box w-[240px]"
+                  // className=""
+                  className={`rounded-box w-[240px] relative showreel-item-img cursor-pointer ${
+                    currentPlayVideo === item.video_id
+                      ? "brightness-[20%]"
+                      : "hover:brightness-100"
+                  }`}
                 />
+                <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center">
+                  {currentPlayVideo === item.video_id ? (
+                    <p>Now Playing...</p>
+                  ) : (
+                    <p className="text-my-orange h-full w-full flex justify-center items-center duration-500">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-12 w-12 bg-white rounded-full"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>

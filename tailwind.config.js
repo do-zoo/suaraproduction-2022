@@ -1,18 +1,18 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    colors: {
-      transparent: "transparent",
-      current: "currentColor",
-      "text-color": "#FEF9FF",
-      "text-color-dark": "#000000",
-      "main-color": "#091114",
-      "my-orange": "#FF7F2B",
-      "header-footer-color": "#132E32",
-      "light-violet": "#E0E4FC",
-      white: "#FFFFFF",
-    },
     extend: {
+      colors: {
+        transparent: "transparent",
+        current: "currentColor",
+        "text-color": "#FEF9FF",
+        "text-color-dark": "#000000",
+        "main-color": "#091114",
+        "my-orange": "#FF7F2B",
+        "header-footer-color": "#132E32",
+        "light-violet": "#E0E4FC",
+        white: "#FFFFFF",
+      },
       "font-family": {
         myFont: ["Poppins", "sans-serif"],
       },
