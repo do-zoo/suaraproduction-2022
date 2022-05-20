@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AboutBanner, ContactUsElement, OurTeam } from "../../components";
 
 function About() {
+  useEffect(() => {
+    document.title = "Suara Production | About Us";
+  }, []);
   return (
     <section>
       <AboutBanner />

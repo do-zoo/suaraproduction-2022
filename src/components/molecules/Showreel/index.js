@@ -7,7 +7,8 @@ import {
 } from "../../../config/Redux/actions";
 
 function Showreel() {
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingImage, setIsLoadingImage] = useState(true);
   const [menuId, setMenuId] = useState(null);
   // const [currentVideo, setCurrentVideo] = useState();
 
@@ -23,6 +24,10 @@ function Showreel() {
 
   useEffect(() => {
     dispatch(setDataShowreel());
+    setIsLoadingImage(true);
+    setTimeout(() => {
+      setIsLoadingImage(false);
+    }, 1000);
   }, [dispatch]);
 
   useEffect(() => {
@@ -32,12 +37,16 @@ function Showreel() {
   }, [showreelData]);
 
   useEffect(() => {
+    setIsLoading(true);
+    setIsLoadingImage(true);
     if (menuId) {
       dispatch(setDataShowreelByCategoryId(menuId));
+      setTimeout(() => {
+        setIsLoadingImage(false);
+        setIsLoading(false);
+      }, 1000);
     }
   }, [menuId, dispatch]);
-
-  console.log(currentPlayVideo);
   const handleMenuId = (id) => {
     setMenuId(id);
   };
@@ -59,7 +68,7 @@ function Showreel() {
                   <button
                     className={
                       showreelCurrent?._id === item._id
-                        ? "relative text-2xl h-8 font-semibold duration-500"
+                        ? "relative text-2xl h-8 font-semibold duration-500 text-my-orange"
                         : "relative font-light h-8 duration-500"
                     }
                     key={item._id}
@@ -74,6 +83,11 @@ function Showreel() {
             <div className="relative">
               <div className="video-embed-cont overflow-hidden relative w-full after:pt-[56.25%] after:block rounded-2xl cursor-auto border-8">
                 <div className="w-full h-full absolute top-0 left-0">
+                  {isLoading && (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <LoadingVideo />
+                    </div>
+                  )}
                   <iframe
                     className="w-full h-full"
                     src={`https://www.youtube.com/embed/${currentPlayVideo}`}
@@ -92,9 +106,13 @@ function Showreel() {
               <div className="absolute left-0 top-0 video-menu-item grid grid-cols-2 grid-rows-4 overflow-hidden md:gap-2 lg:gap-5 justify-center items-center pb-6 pr-5">
                 {showreelCurrent?.data?.map((item) => (
                   <div
-                    className="relative rounded-md showreel-item-img cursor-pointer"
+                    className="relative rounded-md showreel-item-img cursor-pointer overflow-hidden"
                     key={item._id}
                     onClick={() => {
+                      setIsLoading(true);
+                      setTimeout(() => {
+                        setIsLoading(false);
+                      }, 500);
                       dispatch(setCurrentPlayVideo(item.video_id));
                     }}
                   >
@@ -109,6 +127,11 @@ function Showreel() {
                       }`}
                     />
                     <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center">
+                      {isLoadingImage && (
+                        <div className=" absolute top-0 left-0 w-full h-full bg-black flex justify-center items-center">
+                          <LoadingVideo />
+                        </div>
+                      )}
                       {currentPlayVideo === item.video_id ? (
                         <p>Now Playing...</p>
                       ) : (
@@ -137,9 +160,13 @@ function Showreel() {
             {/* item here */}
             {showreelCurrent?.data?.map((item) => (
               <div
-                className="carousel-item relative"
+                className="carousel-item relative overflow-hidden rounded-box "
                 key={item._id}
                 onClick={() => {
+                  setIsLoading(true);
+                  setTimeout(() => {
+                    setIsLoading(false);
+                  }, 500);
                   dispatch(setCurrentPlayVideo(item.video_id));
                 }}
               >
@@ -147,13 +174,18 @@ function Showreel() {
                   src={`https://img.youtube.com/vi/${item.video_id}/mqdefault.jpg`}
                   alt={item.title}
                   // className=""
-                  className={`rounded-box w-[240px] relative showreel-item-img cursor-pointer ${
+                  className={`w-[240px] relative showreel-item-img cursor-pointer ${
                     currentPlayVideo === item.video_id
                       ? "brightness-[20%]"
                       : "hover:brightness-100"
                   }`}
                 />
                 <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center">
+                  {isLoadingImage && (
+                    <div className="absolute top-0 left-0 w-full h-full bg-black flex justify-center items-center">
+                      <LoadingVideo />
+                    </div>
+                  )}
                   {currentPlayVideo === item.video_id ? (
                     <p>Now Playing...</p>
                   ) : (
@@ -183,3 +215,13 @@ function Showreel() {
 }
 
 export default Showreel;
+
+function LoadingVideo() {
+  return (
+    <div className="relative">
+      <div className="ball-clip-rotate-inner mx-auto  p-12">
+        <div className="dot-spin relative w-2 h-2 rounded-full bg-transparent mx-auto shadow-[0_-18px_0_0_#ffffff,12.72984px_-12.72984px_0_0_#ffffff,_18px_0_0_0_#ffffff,12.72984px_12.72984px_0_0_rgba(152,128,255,0),_0_18px_0_0_rgba(152,128,255,0),-12.72984px_12.72984px_0_0_rgba(152,128,255,0),-18px_0_0_0_rgba(152,128,255,0),-12.72984px_-12.72984px_0_0_rgba(152,128,255,0)] animate-spin-dot"></div>
+      </div>
+    </div>
+  );
+}

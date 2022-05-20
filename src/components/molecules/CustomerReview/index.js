@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function CustomerReview() {
   //   const [pageNow, setPageNow] = useState(0);

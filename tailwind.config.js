@@ -17,6 +17,40 @@ module.exports = {
         myFont: ["Poppins", "sans-serif"],
       },
       keyframes: {
+        "spin-dot": {
+          "0%,100% ": {
+            "box-shadow":
+              "0 -18px 0 0 #ffffff, 12.72984px -12.72984px 0 0 #ffffff, 18px 0 0 0 #ffffff, 12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), 0 18px 0 -5px rgba(152, 128, 255, 0), -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 -5px rgba(152, 128, 255, 0), -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0)",
+          },
+          "12.5% ": {
+            "box-shadow":
+              "0 -18px 0 -5px rgba(152, 128, 255, 0), 12.72984px -12.72984px 0 0 #ffffff, 18px 0 0 0 #ffffff, 12.72984px 12.72984px 0 0 #ffffff, 0 18px 0 -5px rgba(152, 128, 255, 0), -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 -5px rgba(152, 128, 255, 0), -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0)",
+          },
+          "25% ": {
+            "box-shadow":
+              "0 -18px 0 -5px rgba(152, 128, 255, 0), 12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0), 18px 0 0 0 #ffffff, 12.72984px 12.72984px 0 0 #ffffff, 0 18px 0 0 #ffffff, -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 -5px rgba(152, 128, 255, 0), -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0)",
+          },
+          "37.5% ": {
+            "box-shadow":
+              "0 -18px 0 -5px rgba(152, 128, 255, 0), 12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0), 18px 0 0 -5px rgba(152, 128, 255, 0), 12.72984px 12.72984px 0 0 #ffffff, 0 18px 0 0 #ffffff, -12.72984px 12.72984px 0 0 #ffffff, -18px 0 0 -5px rgba(152, 128, 255, 0), -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0)",
+          },
+          "50% ": {
+            "box-shadow":
+              "0 -18px 0 -5px rgba(152, 128, 255, 0), 12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0), 18px 0 0 -5px rgba(152, 128, 255, 0), 12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), 0 18px 0 0 #ffffff, -12.72984px 12.72984px 0 0 #ffffff, -18px 0 0 0 #ffffff, -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0)",
+          },
+          "62.5% ": {
+            "box-shadow":
+              "0 -18px 0 -5px rgba(152, 128, 255, 0), 12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0), 18px 0 0 -5px rgba(152, 128, 255, 0), 12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), 0 18px 0 -5px rgba(152, 128, 255, 0), -12.72984px 12.72984px 0 0 #ffffff, -18px 0 0 0 #ffffff, -12.72984px -12.72984px 0 0 #ffffff",
+          },
+          "75% ": {
+            "box-shadow":
+              "0 -18px 0 0 #ffffff, 12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0), 18px 0 0 -5px rgba(152, 128, 255, 0), 12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), 0 18px 0 -5px rgba(152, 128, 255, 0), -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 0 #ffffff, -12.72984px -12.72984px 0 0 #ffffff",
+          },
+          "87.5% ": {
+            "box-shadow":
+              "0 -18px 0 0 #ffffff, 12.72984px -12.72984px 0 0 #ffffff, 18px 0 0 -5px rgba(152, 128, 255, 0), 12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), 0 18px 0 -5px rgba(152, 128, 255, 0), -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 -5px rgba(152, 128, 255, 0), -12.72984px -12.72984px 0 0 #ffffff",
+          },
+        },
         myFadeIn: {
           "0%": {
             opacity: 0,
@@ -41,6 +75,9 @@ module.exports = {
             display: "none",
           },
         },
+      },
+      animation: {
+        "spin-dot": "spin-dot 1.5s infinite linear",
       },
     },
   },
