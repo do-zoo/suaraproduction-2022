@@ -1,10 +1,41 @@
 import { MailIcon, PaperAirplaneIcon, PhoneIcon } from "@heroicons/react/solid";
 import React, { useEffect } from "react";
-
+import { useForm } from "react-hook-form";
+import emailjs from "emailjs-com";
 function Contact() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   useEffect(() => {
     document.title = "Suara Production | Contact Us";
   }, []);
+  const onSubmit = (data) => {
+    const { firstName, lastName, email, subject, message } = data;
+    const templateParams = {
+      name: firstName + " " + lastName,
+      email,
+      subject,
+      message,
+    };
+    emailjs
+      .send(
+        "service_ah1e9hq",
+        "template_6bokzlf",
+        templateParams,
+        "Bu90ywRd3buHNJBab"
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
+  };
+  // console.log(errors);
   return (
     <section className=" text-text-color py-16 bg-main-color overflow-hidden relative">
       <div className="relative w-full md:w-[640px] text-center mx-auto mb-16 mt-20">
@@ -16,7 +47,11 @@ function Contact() {
         <div className=" blur-gradient w-[360px] h-[360px] absolute left-[100px] top-1/2 -translate-y-1/2 rounded-full" />
         <div className="form relative bg-main-color p-6 md:p-16 rounded-box flex flex-wrap gap-16 lg:gap-0 justify-center lg:justify-between">
           {/* <!-- component --> */}
-          <form className="w-full lg:w-1/2 max-w-lg">
+          <form
+            className="w-full lg:w-1/2 max-w-lg"
+            onSubmit={handleSubmit(onSubmit)}
+            onInvalid={(e) => e.preventDefault()}
+          >
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
@@ -26,14 +61,24 @@ function Contact() {
                   First Name
                 </label>
                 <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white text-main-color"
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white text-main-color ${
+                    errors.firstName ? "border-red-500 " : "border-gray-200"
+                  }`}
                   id="grid-first-name"
                   type="text"
-                  placeholder="Jane"
+                  placeholder="First Name"
+                  {...register("firstName", {
+                    required: {
+                      value: true,
+                      message: "First name is required",
+                    },
+                  })}
                 />
-                <p className="text-red-500 text-xs italic">
-                  Please fill out this field.
-                </p>
+                {errors.firstName && (
+                  <p className="text-red-500 text-xs italic">
+                    {errors.firstName.message}
+                  </p>
+                )}
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label
@@ -43,11 +88,24 @@ function Contact() {
                   Last Name
                 </label>
                 <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color"
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
+                    errors.lastName ? "border-red-500 " : "border-gray-200"
+                  }`}
                   id="grid-last-name"
                   type="text"
-                  placeholder="Doe"
+                  placeholder="Last Name"
+                  {...register("lastName", {
+                    required: {
+                      value: true,
+                      message: "Last name is required",
+                    },
+                  })}
                 />
+                {errors.lastName && (
+                  <p className="text-red-500 text-xs italic">
+                    {errors.lastName.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -59,13 +117,28 @@ function Contact() {
                   E-mail
                 </label>
                 <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color"
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
+                    errors.email ? "border-red-500 " : "border-gray-200"
+                  }`}
                   id="email"
-                  type="email"
+                  type="text"
+                  placeholder="Email"
+                  {...register("email", {
+                    required: {
+                      value: true,
+                      message: "Email is required",
+                    },
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
                 />
-                <p className="text-gray-600 text-xs italic">
-                  Some tips - as long as needed
-                </p>
+                {errors.email && (
+                  <p className="text-red-500 text-xs italic">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -77,13 +150,24 @@ function Contact() {
                   Subject
                 </label>
                 <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color"
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
+                    errors.subject ? "border-red-500 " : "border-gray-200"
+                  }`}
                   id="subject"
                   type="text"
+                  placeholder="Subject"
+                  {...register("subject", {
+                    required: {
+                      value: true,
+                      message: "Subject is required",
+                    },
+                  })}
                 />
-                <p className="text-gray-600 text-xs italic">
-                  Some tips - as long as needed
-                </p>
+                {errors.subject && (
+                  <p className="text-red-500 text-xs italic">
+                    {errors.subject.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -95,23 +179,48 @@ function Contact() {
                   Message
                 </label>
                 <textarea
-                  className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none text-main-color"
+                  className={`no-resize appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none text-main-color ${
+                    errors.message ? "border-red-500 " : "border-gray-200"
+                  }`}
                   id="message"
-                ></textarea>
-                {/* <p className="text-gray-600 text-xs italic">
-                  Re-size can be disabled by set by resize-none / resize-y /
-                  resize-x / resize
-                </p> */}
+                  placeholder="Message"
+                  {...register("message", {
+                    required: {
+                      value: true,
+                      message: "Message is required",
+                    },
+                  })}
+                />
+                {errors.message && (
+                  <p className="text-red-500 text-xs italic">
+                    {errors.message.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="md:flex md:items-center">
               <div className="md:w-1/3">
-                <button
-                  className="w-full shadow bg-my-orange hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                  type="button"
-                >
-                  Send
-                </button>
+                <input
+                  className={`${
+                    errors.email ||
+                    errors.firstName ||
+                    errors.lastName ||
+                    errors.subject ||
+                    errors.message
+                      ? "bg-gray-400 "
+                      : "bg-my-orange hover:bg-[#a84b0a]"
+                  } w-full shadow  focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer`}
+                  type={
+                    errors.email ||
+                    errors.firstName ||
+                    errors.lastName ||
+                    errors.subject ||
+                    errors.message
+                      ? "button"
+                      : "submit"
+                  }
+                  value="Send"
+                />
               </div>
               <div className="md:w-2/3"></div>
             </div>
