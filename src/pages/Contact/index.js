@@ -3,15 +3,29 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "emailjs-com";
 function Contact() {
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isSent, setIsSent] = React.useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState,
+    formState: { errors, isSubmitSuccessful },
   } = useForm();
   useEffect(() => {
     document.title = "Suara Production | Contact Us";
-  }, []);
-  const onSubmit = (data) => {
+    if (formState.isSubmitSuccessful) {
+      setIsSent(true);
+      reset({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    }
+  }, [isSubmitSuccessful, formState, reset]);
+  const onSubmit = async (data) => {
     const { firstName, lastName, email, subject, message } = data;
     const templateParams = {
       name: firstName + " " + lastName,
@@ -19,7 +33,8 @@ function Contact() {
       subject,
       message,
     };
-    emailjs
+    setIsLoading(true);
+    await emailjs
       .send(
         "service_ah1e9hq",
         "template_6bokzlf",
@@ -29,9 +44,11 @@ function Contact() {
       .then(
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
+          setIsLoading(false);
         },
         function (error) {
           console.log("FAILED...", error);
+          setIsLoading(false);
         }
       );
   };
@@ -200,27 +217,54 @@ function Contact() {
             </div>
             <div className="md:flex md:items-center">
               <div className="md:w-1/3">
-                <input
-                  className={`${
-                    errors.email ||
-                    errors.firstName ||
-                    errors.lastName ||
-                    errors.subject ||
-                    errors.message
-                      ? "bg-gray-400 "
-                      : "bg-my-orange hover:bg-[#a84b0a]"
-                  } w-full shadow  focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer`}
-                  type={
-                    errors.email ||
-                    errors.firstName ||
-                    errors.lastName ||
-                    errors.subject ||
-                    errors.message
-                      ? "button"
-                      : "submit"
-                  }
-                  value="Send"
-                />
+                {isLoading ? (
+                  <button className="btn loading bg-[#a84b0a] text-white">
+                    Send
+                  </button>
+                ) : (
+                  <button
+                    className={`${
+                      errors.email ||
+                      errors.firstName ||
+                      errors.lastName ||
+                      errors.subject ||
+                      errors.message
+                        ? "bg-gray-400"
+                        : "bg-my-orange hover:bg-[#a84b0a]"
+                    } btn gap-2 text-white`}
+                    type={
+                      errors.email ||
+                      errors.firstName ||
+                      errors.lastName ||
+                      errors.subject ||
+                      errors.message
+                        ? "button"
+                        : "submit"
+                    }
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      viewBox="0 0 512 512"
+                    >
+                      <title>Send</title>
+                      <path
+                        d="M470.3 271.15L43.16 447.31a7.83 7.83 0 01-11.16-7V327a8 8 0 016.51-7.86l247.62-47c17.36-3.29 17.36-28.15 0-31.44l-247.63-47a8 8 0 01-6.5-7.85V72.59c0-5.74 5.88-10.26 11.16-8L470.3 241.76a16 16 0 010 29.39z"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="32"
+                      />
+                    </svg>
+                    Send
+                  </button>
+                )}
+                {isSent && (
+                  <p className="text-green-500 text-xs italic pt-3">
+                    Submited!
+                  </p>
+                )}
               </div>
               <div className="md:w-2/3"></div>
             </div>
