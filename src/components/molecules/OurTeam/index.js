@@ -27,7 +27,7 @@ function OurTeam() {
               <div className="relative my-card py-4 px-8 rounded-xl bg-light-violet flex flex-col items-center shadow-2xl shadow-main-bg">
                 <div className="image h-36 w-36 rounded-full overflow-hidden mb-4 border-4 border-my-orange">
                   <img
-                    src={`${process.env.REACT_APP_API_URL}/images/${item.avatar}`}
+                    src={item.avatar.url}
                     alt={item.name}
                     className="h-full w-full object-cover"
                   />

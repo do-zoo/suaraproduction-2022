@@ -30,7 +30,7 @@ function Trusted() {
           <div className="section">
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[0]?.logo}`}
+                src={data[0]?.logo.url}
                 alt={data[0]?.name}
                 title={data[0]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
@@ -40,7 +40,7 @@ function Trusted() {
           <div className="section flex sm:flex-col gap-3 lg:gap-5">
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[1]?.logo}`}
+                src={data[1]?.logo.url}
                 alt={data[1]?.name}
                 title={data[1]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
@@ -48,7 +48,7 @@ function Trusted() {
             </div>
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[2]?.logo}`}
+                src={data[2]?.logo.url}
                 alt={data[2]?.name}
                 title={data[2]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
@@ -58,7 +58,7 @@ function Trusted() {
           <div className="section flex sm:flex-col gap-3 lg:gap-5">
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[3]?.logo}`}
+                src={data[3]?.logo.url}
                 alt={data[3]?.name}
                 title={data[3]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
@@ -66,7 +66,7 @@ function Trusted() {
             </div>
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[4]?.logo}`}
+                src={data[4]?.logo.url}
                 alt={data[4]?.name}
                 title={data[4]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
@@ -74,7 +74,7 @@ function Trusted() {
             </div>
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[5]?.logo}`}
+                src={data[5]?.logo.url}
                 alt={data[5]?.name}
                 title={data[5]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
@@ -84,7 +84,7 @@ function Trusted() {
           <div className="section flex sm:flex-col gap-3 lg:gap-5">
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[6]?.logo}`}
+                src={data[6]?.logo.url}
                 alt={data[6]?.name}
                 title={data[6]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
@@ -92,7 +92,7 @@ function Trusted() {
             </div>
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[7]?.logo}`}
+                src={data[7]?.logo.url}
                 alt={data[7]?.name}
                 title={data[7]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
@@ -102,7 +102,7 @@ function Trusted() {
           <div className="section">
             <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
               <img
-                src={`${process.env.REACT_APP_API_URL}/images/${data[8]?.logo}`}
+                src={data[8]?.logo.url}
                 alt={data[8]?.name}
                 title={data[8]?.name}
                 className="max-w-full max-h-full duration-500 px-2"
