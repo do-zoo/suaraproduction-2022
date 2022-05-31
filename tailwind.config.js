@@ -75,9 +75,18 @@ module.exports = {
             display: "none",
           },
         },
+        "loop-scroll": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(calc(-100% + 300px))",
+          },
+        },
       },
       animation: {
         "spin-dot": "spin-dot 1.5s infinite linear",
+        "loop-scroll": "loop-scroll 50s infinite ease-in-out",
       },
     },
   },

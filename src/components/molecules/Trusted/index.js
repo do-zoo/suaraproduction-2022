@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function Trusted() {
+export default function Trusted() {
   const [data, setData] = React.useState([]);
   useEffect(() => {
     fetch("https://suara-pro-test.herokuapp.com/v1/client/", {
@@ -17,96 +17,63 @@ function Trusted() {
 
   return (
     <section className="relative bg-main-color batas-suci">
-      <div className="mx-auto py-48">
-        <div className="title text-center text-text-color px-16">
-          <h2 className="lg:text-3xl text-2xl font-bold uppercase mb-6 duration-500">
-            Trusted by
-          </h2>
-          <p className="text-sm sm:text-base duration-500">
-            Beberapa Perusahaan dan Lembaga yang menggunakan jasa kami
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row justify-center items-center mt-16 lg:mt-32 gap-3 lg:gap-5 duration-500">
-          <div className="section">
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[0]?.logo.url}
-                alt={data[0]?.name}
-                title={data[0]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
+      <div className="mx-auto py-12 md:py-20">
+        <div className="flex justify-center md:flex-row flex-col-reverse ">
+          <div className="flex-item md:w-1/2 max-w-md max-h-[500px] overflow-hidden mt-16 relative">
+            <div className="carousel-cont absolute grid md:grid-cols-2 grid-cols-3 left-0 animate-loop-scroll">
+              {data.map((item, index) => (
+                <div className="item-logo p-5" key={index}>
+                  <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 mx-auto">
+                    <img
+                      src={item?.logo.url}
+                      alt={item?.name}
+                      title={item?.name}
+                      className="max-w-full max-h-full duration-500 px-2"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="section flex sm:flex-col gap-3 lg:gap-5">
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[1]?.logo.url}
-                alt={data[1]?.name}
-                title={data[1]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
-            </div>
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[2]?.logo.url}
-                alt={data[2]?.name}
-                title={data[2]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
-            </div>
-          </div>
-          <div className="section flex sm:flex-col gap-3 lg:gap-5">
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[3]?.logo.url}
-                alt={data[3]?.name}
-                title={data[3]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
-            </div>
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[4]?.logo.url}
-                alt={data[4]?.name}
-                title={data[4]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
-            </div>
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[5]?.logo.url}
-                alt={data[5]?.name}
-                title={data[5]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
-            </div>
-          </div>
-          <div className="section flex sm:flex-col gap-3 lg:gap-5">
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[6]?.logo.url}
-                alt={data[6]?.name}
-                title={data[6]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
-            </div>
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[7]?.logo.url}
-                alt={data[7]?.name}
-                title={data[7]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
-            </div>
-          </div>
-          <div className="section">
-            <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 ">
-              <img
-                src={data[8]?.logo.url}
-                alt={data[8]?.name}
-                title={data[8]?.name}
-                className="max-w-full max-h-full duration-500 px-2"
-              />
+          <div className="flex-item md:w-1/2 max-w-xl md:pl-10">
+            <div className="relative p-6">
+              <div className="title mb-6">
+                <h1 className="text-2xl md:text-4xl font-bold capitalize text-my-orange">
+                  who are we?
+                </h1>
+              </div>
+              <div className="text-cont">
+                <div className="desc text-sm sm:text-base text-text-color mb-12">
+                  <p className="mb-2">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Explicabo eveniet cumque ducimus saepe est minus inventore
+                    delectus laudantium rerum hic magni veritatis,
+                    exercitationem a sequi fugiat vel corrupti provident.
+                    Mollitia!
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Explicabo eveniet cumque ducimus saepe est minus inventore
+                    delectus laudantium rerum hic magni veritatis,
+                    exercitationem a sequi fugiat vel corrupti provident.
+                    Mollitia!
+                  </p>
+                </div>
+                <div className="detail flex justify-between items-center">
+                  <div className="item">
+                    <p className="font-bold text-my-orange text-3xl">100++</p>
+                    <p>Happy Clients</p>
+                  </div>
+                  <div className="item">
+                    <p className="font-bold text-my-orange text-3xl">1000++</p>
+                    <p>Projects Created</p>
+                  </div>
+                  <div className="item">
+                    <p className="font-bold text-my-orange text-3xl">24/7</p>
+                    <p>Online Support</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -114,5 +81,3 @@ function Trusted() {
     </section>
   );
 }
-
-export default Trusted;
