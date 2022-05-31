@@ -80,6 +80,14 @@ module.exports = {
             transform: "translateY(0px)",
           },
           "50%": {
+            transform: "translateY(calc(-100% + 500px))",
+          },
+        },
+        "m-loop-scroll": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
             transform: "translateY(calc(-100% + 300px))",
           },
         },
@@ -87,6 +95,7 @@ module.exports = {
       animation: {
         "spin-dot": "spin-dot 1.5s infinite linear",
         "loop-scroll": "loop-scroll 50s infinite ease-in-out",
+        "m-loop-scroll": "m-loop-scroll 50s infinite ease-in-out",
       },
     },
   },
