@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 // import { Provider } from 'react-redux';
-import { Footer, Header } from "../components";
+// import { Footer, Header } from "../components";
 import { RoutesConfig } from "../config";
 import "./App.css";
 
@@ -9,9 +9,9 @@ function App() {
     <Fragment>
       <div className="bg-main-color">
         {/* <Provider > */}
-        <Header />
+        {/* <Header /> */}
         <RoutesConfig />
-        <Footer />
+        {/* <Footer /> */}
         {/* </Provider> */}
       </div>
     </Fragment>

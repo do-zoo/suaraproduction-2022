@@ -1,7 +1,6 @@
-// create header component with logo and navigation
-/* This example requires Tailwind CSS v2.0+ */
 import React, { useState } from "react";
 import Logo from "../../../assets/my-logo/logo.png";
+import CustomLink from "../../atoms/customLink";
 
 function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -54,11 +53,7 @@ function Header() {
                 {navs.map((nav, index) => {
                   return (
                     <li className="text-lg text-white" key={index}>
-                      <a href={nav.link} className="relative duration-500">
-                        <span className="hover:text-my-orange  before:absolute before:rounded before:opacity-0 before:w-0 hover:before:opacity-100 hover:before:w-full hover:before:h-[3px] before:bg-my-orange before:bottom-0 hover:before:duration-500 duration-500">
-                          {nav.name}
-                        </span>
-                      </a>
+                      <CustomLink to={nav.link}>{nav.name}</CustomLink>
                     </li>
                   );
                 })}
