@@ -70,11 +70,7 @@ function Header() {
                 {navs.map((nav, index) => {
                   return (
                     <li className="text-lg text-white" key={index}>
-                      <a href={nav.link} className="relative duration-500">
-                        <span className="hover:text-my-orange before:absolute before:rounded before:opacity-0 before:w-0 hover:before:opacity-100 hover:before:w-full hover:before:h-[3px] before:bg-my-orange before:bottom-0 hover:before:duration-500 duration-500">
-                          {nav.name}
-                        </span>
-                      </a>
+                      <CustomLink to={nav.link}>{nav.name}</CustomLink>
                     </li>
                   );
                 })}
