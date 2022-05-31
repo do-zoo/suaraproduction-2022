@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "INGET GUE!",
+  "name": "Suara Production",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,16 @@
       "sizes": "512x512"
     }
   ],
+  "orientation": "portrait-primary",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "Suara Production is a full service video and audio production located in Tangerang Selatan, Indonesia. Suara Production is the leading production services company for Videography, Editing, Casting, Audio Post Production, and many more.",
+  "dir": "ltr",
+  "lang": "en-US",
+  "category": ["Entertainment", "Media", "Video Editing", "Video Clip", "Videographer", "Virtual Event" ],
+  "author": "Suara Production",
+  "publisher": "Suara Production"
+
 }
