@@ -1,15 +1,21 @@
-import React from "react";
+import React, { FC } from 'react';
 
-function ButtonLink({ to }) {
+import { Link } from 'react-router-dom';
+
+type Props = {
+  to: string;
+};
+
+const ButtonLink: FC<Props> = ({ to }) => {
   return (
     <div className="relative ">
-      <a href={to ? to : "/"}>
+      <Link to={to ? to : '/'}>
         <button className="btn btn-md bg-text-color hover:bg-my-orange text-main-color font-bold">
           Contact Us
         </button>
-      </a>
+      </Link>
     </div>
   );
-}
+};
 
 export default ButtonLink;
