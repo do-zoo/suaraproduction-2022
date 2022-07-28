@@ -1,35 +1,30 @@
-import React, { useState } from "react";
-import Logo from "../../../assets/my-logo/logo.png";
-import CustomLink from "../../atoms/customLink";
+import React, { FC, useState } from 'react';
+import Logo from '../../../assets/my-logo/logo.png';
+import CustomLink from '../../atoms/customLink';
 
-function Header() {
+const Header: FC = () => {
   const [isActive, setIsActive] = useState(false);
-
-  const toggleNav = () => {
-    setIsActive(!isActive);
-    console.log(isActive);
-  };
 
   const navs = [
     {
-      name: "Home",
-      link: "/",
+      name: 'Home',
+      link: '/',
     },
     {
-      name: "Services",
-      link: "/services",
+      name: 'Services',
+      link: '/services',
     },
     {
-      name: "Blog",
-      link: "/blog",
+      name: 'Blog',
+      link: '/blog',
     },
     {
-      name: "About",
-      link: "/about",
+      name: 'About',
+      link: '/about',
     },
     {
-      name: "Contact",
-      link: "/contact",
+      name: 'Contact',
+      link: '/contact',
     },
   ];
   return (
@@ -50,7 +45,7 @@ function Header() {
           <div className="flex items-center">
             <nav className="navigation hidden sm:block ">
               <ul className="flex items-center justify-between gap-7 uppercase">
-                {navs.map((nav, index) => {
+                {navs?.map((nav, index) => {
                   return (
                     <li className="text-lg text-white" key={index}>
                       <CustomLink to={nav.link}>{nav.name}</CustomLink>
@@ -62,15 +57,20 @@ function Header() {
             <nav
               className={
                 isActive
-                  ? "nav-mobile sm:hidden absolute w-full h-screen left-0 top-0 bg-main-color duration-500 z-[-10]"
-                  : "absolute w-full h-screen left-0 bg-main-color  opacity-0 top-[-1000px] duration-500 z-[-10]"
+                  ? 'nav-mobile sm:hidden absolute w-full h-screen left-0 top-0 bg-main-color duration-500 z-[-10]'
+                  : 'absolute w-full h-screen left-0 bg-main-color  opacity-0 top-[-1000px] duration-500 z-[-10]'
               }
             >
               <ul className="flex flex-col items-center justify-between gap-[30px] uppercase mt-[80px] duration-500">
                 {navs.map((nav, index) => {
                   return (
                     <li className="text-lg text-white" key={index}>
-                      <CustomLink to={nav.link}>{nav.name}</CustomLink>
+                      <CustomLink
+                        to={nav.link}
+                        onClick={() => setIsActive(false)}
+                      >
+                        {nav.name}
+                      </CustomLink>
                     </li>
                   );
                 })}
@@ -82,10 +82,10 @@ function Header() {
               type="button"
               className={
                 isActive
-                  ? "block sm:hidden relative right-4 w-14 h-14 duration-500 open"
-                  : "block sm:hidden relative right-4 w-14 h-14 duration-500"
+                  ? 'block sm:hidden relative right-4 w-14 h-14 duration-500 open'
+                  : 'block sm:hidden relative right-4 w-14 h-14 duration-500'
               }
-              onClick={toggleNav}
+              onClick={() => setIsActive(!isActive)}
             >
               <span
                 className="icon-left absolute top-[18.5px] left-[12.5px] w-[15px] h-[3px] my-2 block bg-text-color rounded duration-500 hover:pointer
@@ -105,6 +105,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

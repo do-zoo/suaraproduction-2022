@@ -1,10 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Footer, Header } from "../../components";
-import { Home } from "../../pages";
-import About from "../../pages/About";
-import Contact from "../../pages/Contact";
-import Services from "../../pages/Services";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Footer, Header } from '../../components';
+import { Home } from '../../pages';
+import About from '../../pages/About';
+import Contact from '../../pages/Contact';
+import Services from '../../pages/Services';
 
 function RoutesConfig() {
   return (

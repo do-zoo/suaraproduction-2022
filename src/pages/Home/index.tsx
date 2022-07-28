@@ -1,14 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   HomeBanner,
   Trusted,
   Showreel,
   ContactUsElement,
-} from "../../components";
+} from '../../components';
 
 function Home() {
   useEffect(() => {
-    document.title = "Suara Production | Home";
+    document.title = 'Suara Production | Home';
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
   }, []);
   return (
     <div className="relative bg-main-color">

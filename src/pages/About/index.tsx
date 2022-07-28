@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
-import { AboutBanner, ContactUsElement, OurTeam } from "../../components";
+import React, { useEffect } from 'react';
+import { AboutBanner, ContactUsElement, OurTeam } from '../../components';
 
 function About() {
   useEffect(() => {
-    document.title = "Suara Production | About Us";
+    document.title = 'Suara Production | About Us';
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
   }, []);
   return (
     <section>

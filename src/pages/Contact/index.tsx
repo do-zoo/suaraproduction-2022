@@ -1,7 +1,16 @@
-import { MailIcon, PaperAirplaneIcon, PhoneIcon } from "@heroicons/react/solid";
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import emailjs from "emailjs-com";
+import { MailIcon, PaperAirplaneIcon, PhoneIcon } from '@heroicons/react/solid';
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import emailjs from 'emailjs-com';
+
+type FormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
 function Contact() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isSent, setIsSent] = React.useState(false);
@@ -11,24 +20,24 @@ function Contact() {
     reset,
     formState,
     formState: { errors, isSubmitSuccessful },
-  } = useForm();
+  } = useForm<FormData>();
   useEffect(() => {
-    document.title = "Suara Production | Contact Us";
+    document.title = 'Suara Production | Contact Us';
     if (formState.isSubmitSuccessful) {
       setIsSent(true);
       reset({
-        firstName: "",
-        lastName: "",
-        email: "",
-        subject: "",
-        message: "",
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: '',
+        message: '',
       });
     }
   }, [isSubmitSuccessful, formState, reset]);
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     const { firstName, lastName, email, subject, message } = data;
     const templateParams = {
-      name: firstName + " " + lastName,
+      name: firstName + ' ' + lastName,
       email,
       subject,
       message,
@@ -36,22 +45,26 @@ function Contact() {
     setIsLoading(true);
     await emailjs
       .send(
-        "service_ah1e9hq",
-        "template_6bokzlf",
+        'service_ah1e9hq',
+        'template_6bokzlf',
         templateParams,
-        "Bu90ywRd3buHNJBab"
+        'Bu90ywRd3buHNJBab'
       )
       .then(
         function (response) {
-          console.log("SUCCESS!", response.status, response.text);
+          console.log('SUCCESS!', response.status, response.text);
           setIsLoading(false);
         },
         function (error) {
-          console.log("FAILED...", error);
+          console.log('FAILED...', error);
           setIsLoading(false);
         }
       );
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
   // console.log(errors);
   return (
     <section className=" text-text-color py-16 bg-main-color overflow-hidden relative">
@@ -67,7 +80,7 @@ function Contact() {
           <form
             className="w-full lg:w-1/2 max-w-lg"
             onSubmit={handleSubmit(onSubmit)}
-            onInvalid={(e) => e.preventDefault()}
+            onInvalid={e => e.preventDefault()}
           >
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -78,22 +91,22 @@ function Contact() {
                   First Name
                 </label>
                 <input
-                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white text-main-color ${
-                    errors.firstName ? "border-red-500 " : "border-gray-200"
+                  className={`appearance-none block w-full bg-gray-200 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white text-main-color ${
+                    errors?.firstName ? 'border-red-500 ' : 'border-gray-200'
                   }`}
                   id="grid-first-name"
                   type="text"
                   placeholder="First Name"
-                  {...register("firstName", {
+                  {...register('firstName', {
                     required: {
                       value: true,
-                      message: "First name is required",
+                      message: 'First name is required',
                     },
                   })}
                 />
                 {errors.firstName && (
                   <p className="text-red-500 text-xs italic">
-                    {errors.firstName.message}
+                    {errors?.firstName?.message}
                   </p>
                 )}
               </div>
@@ -105,16 +118,16 @@ function Contact() {
                   Last Name
                 </label>
                 <input
-                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
-                    errors.lastName ? "border-red-500 " : "border-gray-200"
+                  className={`appearance-none block w-full bg-gray-200  border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
+                    errors.lastName ? 'border-red-500 ' : 'border-gray-200'
                   }`}
                   id="grid-last-name"
                   type="text"
                   placeholder="Last Name"
-                  {...register("lastName", {
+                  {...register('lastName', {
                     required: {
                       value: true,
-                      message: "Last name is required",
+                      message: 'Last name is required',
                     },
                   })}
                 />
@@ -134,20 +147,20 @@ function Contact() {
                   E-mail
                 </label>
                 <input
-                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
-                    errors.email ? "border-red-500 " : "border-gray-200"
+                  className={`appearance-none block w-full bg-gray-200 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
+                    errors.email ? 'border-red-500 ' : 'border-gray-200'
                   }`}
                   id="email"
                   type="text"
                   placeholder="Email"
-                  {...register("email", {
+                  {...register('email', {
                     required: {
                       value: true,
-                      message: "Email is required",
+                      message: 'Email is required',
                     },
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                      message: "Invalid email address",
+                      message: 'Invalid email address',
                     },
                   })}
                 />
@@ -167,16 +180,16 @@ function Contact() {
                   Subject
                 </label>
                 <input
-                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
-                    errors.subject ? "border-red-500 " : "border-gray-200"
+                  className={`appearance-none block w-full bg-gray-200 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-main-color ${
+                    errors.subject ? 'border-red-500 ' : 'border-gray-200'
                   }`}
                   id="subject"
                   type="text"
                   placeholder="Subject"
-                  {...register("subject", {
+                  {...register('subject', {
                     required: {
                       value: true,
-                      message: "Subject is required",
+                      message: 'Subject is required',
                     },
                   })}
                 />
@@ -196,15 +209,15 @@ function Contact() {
                   Message
                 </label>
                 <textarea
-                  className={`no-resize appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none text-main-color ${
-                    errors.message ? "border-red-500 " : "border-gray-200"
+                  className={`no-resize appearance-none block w-full bg-gray-200 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none text-main-color ${
+                    errors.message ? 'border-red-500 ' : 'border-gray-200'
                   }`}
                   id="message"
                   placeholder="Message"
-                  {...register("message", {
+                  {...register('message', {
                     required: {
                       value: true,
-                      message: "Message is required",
+                      message: 'Message is required',
                     },
                   })}
                 />
@@ -229,8 +242,8 @@ function Contact() {
                       errors.lastName ||
                       errors.subject ||
                       errors.message
-                        ? "bg-gray-400"
-                        : "bg-my-orange hover:bg-[#a84b0a]"
+                        ? 'bg-gray-400'
+                        : 'bg-my-orange hover:bg-[#a84b0a]'
                     } btn gap-2 text-white`}
                     type={
                       errors.email ||
@@ -238,8 +251,8 @@ function Contact() {
                       errors.lastName ||
                       errors.subject ||
                       errors.message
-                        ? "button"
-                        : "submit"
+                        ? 'button'
+                        : 'submit'
                     }
                   >
                     <svg
