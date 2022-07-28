@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 type Props = {
-  to: string;
+  to?: string;
 };
 
 const ButtonLink: FC<Props> = ({ to }) => {

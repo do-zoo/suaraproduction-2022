@@ -11,11 +11,11 @@ function RoutesConfig() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<ComingSoonRoute />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route index element={<Home />} />
+        <Route path="blog" element={<ComingSoonRoute />} />
+        <Route path="services" element={<Services />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
       </Routes>
       <Footer />
     </Router>
