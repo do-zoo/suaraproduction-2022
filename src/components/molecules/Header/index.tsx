@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import Logo from '../../../assets/my-logo/logo.png';
+import { logo } from '@/assets';
 import CustomLink from '../../atoms/customLink';
 
 const Header: FC = () => {
@@ -36,7 +36,7 @@ const Header: FC = () => {
               href="/"
               className="text-lg logo-font text-white flex items-center gap-3"
             >
-              <img src={Logo} alt="logo" className="h-12" />
+              <img src={logo} alt="logo" className="h-12" />
               <span className="hidden md:inline duration-500">
                 Suara Production
               </span>

@@ -2,6 +2,7 @@ import { MailIcon, PaperAirplaneIcon, PhoneIcon } from '@heroicons/react/solid';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
+import { MailForm } from '@/types/mailForm';
 
 type FormData = {
   firstName: string;
@@ -34,7 +35,7 @@ function Contact() {
       });
     }
   }, [isSubmitSuccessful, formState, reset]);
-  const onSubmit = async data => {
+  const onSubmit = async (data: MailForm) => {
     const { firstName, lastName, email, subject, message } = data;
     const templateParams = {
       name: firstName + ' ' + lastName,

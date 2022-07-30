@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from '@/config/Redux/hooks';
+import {
+  selectClientLogo,
+  setClientLogoList,
+} from '@/config/Redux/slices/clientLogoSlice';
+import { useClientsLogo } from '@/hooks/api/app';
+import React, { useEffect } from 'react';
 
 export default function Trusted() {
-  const [data, setData] = React.useState([]);
+  const { clients } = useAppSelector(selectClientLogo);
+  const { data, isLoading } = useClientsLogo();
+
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    fetch("https://suara-pro-test.herokuapp.com/v1/client/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.clients);
-      });
-  }, []);
+    dispatch(setClientLogoList(data));
+  }, [dispatch, data]);
 
   return (
     <section className="relative bg-main-color batas-suci">
@@ -21,18 +21,19 @@ export default function Trusted() {
         <div className="flex justify-center md:flex-row flex-col-reverse">
           <div className="relative flex-item md:w-1/2 md:max-w-md w-full h-[300px] md:h-[500px] overflow-hidden mt-16">
             <div className="carousel-cont grid lg:grid-cols-2 grid-cols-3 left-0 m-animate-loop-scroll md:animate-loop-scroll  justify-center">
-              {data.map((item, index) => (
-                <div className="item-logo md:p-5 p-2" key={index}>
-                  <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 mx-auto">
-                    <img
-                      src={item?.logo.url}
-                      alt={item?.name}
-                      title={item?.name}
-                      className="max-w-full max-h-full duration-500 px-2"
-                    />
+              {!isLoading &&
+                clients?.map((item, index) => (
+                  <div className="item-logo md:p-5 p-2" key={index}>
+                    <div className="item w-24 lg:w-44 h-12 lg:h-24 flex justify-center items-center bg-text-color rounded-lg lg:rounded-2xl duration-500 mx-auto">
+                      <img
+                        src={item?.logo.url}
+                        alt={item?.name}
+                        title={item?.name}
+                        className="max-w-full max-h-full duration-500 px-2"
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
           <div className="flex-item md:w-1/2 max-w-xl md:pl-10 mx-auto">

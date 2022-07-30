@@ -1,12 +1,21 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import React from 'react';
 import { RoutesConfig } from '../config';
 import './App.css';
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <div className="bg-main-color">
-      <RoutesConfig />
-    </div>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <div className="bg-main-color">
+          <RoutesConfig />
+        </div>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </>
   );
 }
 

@@ -1,4 +1,3 @@
-import ButtonLink from "./Button";
-import VideoPlayer from "./VideoPlayer";
+import ButtonLink from './Button';
 
-export {VideoPlayer, ButtonLink};
+export { ButtonLink };

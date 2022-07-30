@@ -1,23 +1,15 @@
-import React, { useEffect } from "react";
-import Aos from "aos";
-import "aos/dist/aos.css";
-import { hero, heroBg } from "../../../assets";
-import { ChevronDoubleDownIcon } from "@heroicons/react/solid";
+import React from 'react';
+import 'aos/dist/aos.css';
+import { hero, heroBg } from '../../../assets';
+import { ChevronDoubleDownIcon } from '@heroicons/react/solid';
 
 function HomeBanner() {
   const style = {
     backgroundImage: `url(${heroBg})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
   };
-
-  useEffect(() => {
-    Aos.init();
-    // const w = window.scrollY;
-    // const h = window.innerHeight;
-    // console.log(w , h);
-  }, []);
 
   return (
     <div
